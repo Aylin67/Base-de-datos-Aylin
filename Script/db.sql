@@ -122,16 +122,16 @@ INSERT INTO venta (id_cliente, id_producto, precio, fecha_de_venta) VALUES
     (11, 1011, 38.25, '2024-04-27');
 
 INSERT INTO compra (id_proveedor, id_producto, fecha_de_compra) VALUES 
-    (2, 100222469, '2024-04-18'),
-    (3, 100222470, '2024-04-19'),
-    (4, 100222471, '2024-04-20'),
-    (5, 100222472, '2024-04-21'),
-    (6, 100222473, '2024-04-22'),
-    (7, 100222474, '2024-04-23'),
-    (8, 100222475, '2024-04-24'),
-    (9, 100222476, '2024-04-25'),
-    (10, 100222477, '2024-04-26'),
-    (11, 100222478, '2024-04-27');
+    (2, 200222471, '2024-04-18'),
+    (3, 200222472, '2024-04-19'),
+    (4, 200222473, '2024-04-20'),
+    (5, 200222474, '2024-04-21'),
+    (6, 200222475, '2024-04-22'),
+    (7, 200222476, '2024-04-23'),
+    (8, 200222477, '2024-04-24'),
+    (9, 200222478, '2024-04-25'),
+    (10, 200222479, '2024-04-26'),
+    (11, 200222480, '2024-04-27');
 
 select*from farmacia.compra;
 select*from farmacia.producto;
@@ -163,7 +163,7 @@ select count(*)from producto;
 select sum(cantidad)from producto;
 select sum(precio)from factura;
 
-select max(edad),min(telefono) from cliente;
+select max(edad),min(edad) from cliente;
 select max(id_producto),min(id_compra) from compra;
 select max(precio),min(fecha) from factura;
 select max(codigo),min(cantidad) from producto;
