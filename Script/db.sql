@@ -59,6 +59,27 @@ CREATE TABLE IF NOT EXISTS compra (
   FOREIGN KEY (id_proveedor) REFERENCES proveedor(id_proveedor),
   FOREIGN KEY (id_producto) REFERENCES producto(codigo)
 );
+
+CREATE TABLE IF NOT EXISTS tipo_producto (
+  id_tipo INT NOT NULL AUTO_INCREMENT,
+  id_generico VARCHAR(25),
+  id_patente VARCHAR(25),
+  PRIMARY KEY (id_tipo)
+);
+
+ALTER TABLE producto
+ADD COLUMN id_tipo INT,
+ADD CONSTRAINT fk_tipo_producto
+FOREIGN KEY (id_tipo) REFERENCES tipo_producto(id_tipo);
+
+INSERT INTO tipo_producto (id_generico, id_patente) VALUES
+    ('GEN01', 'PAT01'),
+    ('GEN02', 'PAT02'),
+    ('GEN03', 'PAT03'),
+    ('GEN04', 'PAT04'),
+    ('GEN05', 'PAT05');
+
+
 INSERT INTO farmacia.proveedor (edad, telefono, direccion, correo) VALUES 
     (30, '1234567890', 'Calle Principal 123', 'proveedor1@example.com'),
 	(25, '0987654321', 'Avenida Central 456', 'proveedor2@example.com'),
