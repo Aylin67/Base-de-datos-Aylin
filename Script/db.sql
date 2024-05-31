@@ -59,26 +59,41 @@ CREATE TABLE IF NOT EXISTS compra (
   FOREIGN KEY (id_proveedor) REFERENCES proveedor(id_proveedor),
   FOREIGN KEY (id_producto) REFERENCES producto(codigo)
 );
-
 CREATE TABLE IF NOT EXISTS tipo_producto (
   id_tipo INT NOT NULL AUTO_INCREMENT,
-  id_generico VARCHAR(25),
-  id_patente VARCHAR(25),
+  tipo VARCHAR(25),
   PRIMARY KEY (id_tipo)
 );
+select * from tipo_producto;
+alter table tipo_producto add column tipo varchar(25);
+alter table tipo_producto drop column id_generico;
+alter table tipo_producto drop column id_patente;
 
 ALTER TABLE producto
 ADD COLUMN id_tipo INT,
 ADD CONSTRAINT fk_tipo_producto
 FOREIGN KEY (id_tipo) REFERENCES tipo_producto(id_tipo);
 
-INSERT INTO tipo_producto (id_generico, id_patente) VALUES
-    ('GEN01', 'PAT01'),
-    ('GEN02', 'PAT02'),
-    ('GEN03', 'PAT03'),
-    ('GEN04', 'PAT04'),
-    ('GEN05', 'PAT05');
+INSERT INTO tipo_producto (tipo) VALUES
+    ('GEN01'),
+    ('PAT01'),
+    ('GEN02'),
+    ('PAT02'),
+    ('GEN03'), 
+    ('PAT03'),
+    ('GEN04'),
+    ('PAT04'),
+    ('GEN05'), 
+    ('PAT05');
 
+update tipo_producto set tipo = "GEN01" where id_tipo = 1;
+update tipo_producto set tipo = "GEN02" where id_tipo = 2;
+update tipo_producto set tipo = "PAT01" where id_tipo = 1;
+update tipo_producto set tipo = "PAT02" where id_tipo = 2;
+update tipo_producto set tipo = "GEN03" where id_tipo = 3;
+update tipo_producto set tipo = "GEN04" where id_tipo = 4;
+update tipo_producto set tipo = "GEN05" where id_tipo = 5;
+update tipo_producto set tipo = "PAT05" where id_tipo = 5;
 
 INSERT INTO farmacia.proveedor (edad, telefono, direccion, correo) VALUES 
     (30, '1234567890', 'Calle Principal 123', 'proveedor1@example.com'),
